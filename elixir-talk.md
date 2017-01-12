@@ -645,6 +645,17 @@ iex> File.read!(out.path)
 iex> stream == out
 true
 ```
+-----
+# Example (me)
+
+```
+iex(5)> {out, exit_status} = System.cmd("which dat", [], into: steam)
+** (ErlangError) erlang error: :enoent
+    (elixir) lib/system.ex:564: System.cmd("which dat", [], [into: %IO.Stream{device: :standard_io, line_or_bytes: :line, raw: false}])
+iex(5)> {out, exit_status} = System.cmd("which", ["dat"], into: steam)
+{%IO.Stream{device: :standard_io, line_or_bytes: :line, raw: false}, 1}
+```
+
 
 --------------------------------------------------------------
 
